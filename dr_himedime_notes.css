@@ -1,205 +1,147 @@
-/* dr_himedime_notes.css */
-
 body {
-    background-color: #1a1a1a; /* 暗い背景 */
-    color: #c0c0c0; /* やや明るいグレーの文字 */
-    font-family: 'Courier New', Courier, monospace; /* タイプライター風フォント */
-    line-height: 1.7;
+    font-family: 'Noto Serif JP', serif;
+    background-color: #1a0000; /* 深い赤黒 */
+    color: #e0e0e0; /* 薄いグレー */
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* 上からコンテンツを表示 */
-    min-height: 100vh;
-    box-sizing: border-box;
+    padding: 0;
+    overflow-x: hidden;
+    /* background-image: url('images/dark-pattern.png'); */ /* 必要であれば有効化 */
+    background-attachment: fixed;
 }
 
-.container {
-    background-color: #222; /* 少し明るい背景でコンテンツエリアを区別 */
-    padding: 25px 35px;
-    border: 1px solid #444;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    max-width: 800px;
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明の黒いオーバーレイ */
+    z-index: -1;
+    animation: noise 0.1s infinite alternate-reverse;
 }
 
-.page-header {
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px dashed #cc0000; /* 濃い赤の破線 */
-    padding-bottom: 15px;
-}
-
-    .page-header h1 {
-        font-family: 'Creepster', cursive;
-        color: #ff4136; /* 明るい赤 */
-        font-size: 2.5em; /* 少し大きめ */
-        margin-bottom: 5px;
-        text-shadow: 1px 1px 3px #000;
+@keyframes noise {
+    0% {
+        opacity: 0.7;
     }
 
-.researcher-name {
-    font-style: italic;
-    color: #999;
-    font-size: 0.9em;
+    100% {
+        opacity: 0.75;
+    }
 }
 
-#introduction {
-    margin-bottom: 30px;
-    padding: 15px;
-    background-color: #282828;
-    border-left: 3px solid #ff4d4d;
+header {
+    background-color: #330000;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 3px solid #ff0000;
+    box-shadow: 0 0 20px #ff0000;
 }
 
-    #introduction h2 {
-        font-size: 1.8em;
-        color: #ff8080;
-        border-bottom: none;
-        margin-bottom: 10px;
+    header h1 {
+        font-family: 'Creepster', cursive; /* 不気味なフォント */
+        font-size: 3.5em;
+        color: #ff4d4d; /* 鮮血のような赤 */
+        margin: 0;
+        text-shadow: 2px 2px 5px #000;
+        animation: pulse 2s infinite;
     }
 
-.entry {
-    margin-bottom: 35px;
-    padding: 20px;
-    border: 1px solid #3a3a3a; /* 暗めのボーダー */
-    background-color: #1e1e1e; /* エントリの背景をさらに暗く */
-    border-radius: 3px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.entry-header {
-    margin-bottom: 15px;
-    border-bottom: 1px dotted #777;
-    padding-bottom: 10px;
-}
-
-.entry-title {
-    font-family: 'Noto Serif JP', serif; /* 少し読みやすいフォントに変更 */
-    font-size: 1.6em;
-    color: #ffd700; /* ゴールドっぽい色 */
-    margin-bottom: 5px;
-}
-
-.entry-date {
-    font-size: 0.85em;
-    color: #888;
-    font-style: italic;
-}
-
-.entry-content p {
-    margin-bottom: 12px;
-    text-align: justify;
-    text-indent: 1.5em; /* 段落の最初にインデント */
-}
-
-.entry-image {
-    max-width: 80%; /* 画像が大きすぎないように */
-    height: auto;
-    display: block;
-    margin: 20px auto;
-    border: 3px solid #555;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    filter: sepia(0.3) contrast(1.1) brightness(0.9); /* 古びた写真風 */
-}
-
-.small-image {
-    max-width: 250px;
-}
-
-.highlight {
-    background-color: #444; /* 暗い背景に合うハイライト */
-    color: #ffeb3b;
-    padding: 0 3px;
-    font-weight: bold;
-}
-
-.warning-text { /* 既存のスタイルと重複しないように調整 */
-    color: #ff6961; /* 少し柔らかい赤 */
-    font-weight: bold;
-    border: 1px dashed #ff6961;
-    padding: 5px;
-    display: inline-block;
-    background-color: rgba(255, 105, 97, 0.1);
-}
-
-.yummy-takeover {
-    color: #ff3333; /* 強烈な赤 */
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.3em;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    animation: yummy-pulse-strong 0.3s infinite alternate;
-}
-
-@keyframes yummy-pulse-strong {
-    from {
-        opacity: 0.6;
+@keyframes pulse {
+    0% {
         transform: scale(1);
     }
 
-    to {
-        opacity: 1;
+    50% {
         transform: scale(1.05);
     }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
-.final-thoughts {
-    margin-top: 25px;
-    padding: 20px;
-    background-color: #101010;
-    border: 1px solid #770000; /* 濃い赤のボーダー */
+.subtitle {
+    font-size: 1.2em;
     color: #ff8080;
+    margin-top: 5px;
+    font-style: italic;
 }
 
-    .final-thoughts strong {
-        color: #ff4d4d;
-    }
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: rgba(10, 0, 0, 0.8);
+    border: 1px solid #440000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
 
-.final-transmission {
-    margin-top: 20px;
-    padding: 15px;
-    border: 2px dashed #ff0000; /* より目立つボーダー */
-    background-color: rgba(100, 0, 0, 0.2); /* 暗い赤の背景 */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px dashed #660000;
+    background-color: rgba(0,0,0,0.3);
+    position: relative;
+}
+
+h2 {
+    font-family: 'Creepster', cursive;
+    font-size: 2.5em;
+    color: #ff6666;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #800000;
+    padding-bottom: 10px;
+}
+
+#countdown-section {
     text-align: center;
 }
 
-    .final-transmission a {
-        color: #ffa500; /* オレンジ色 */
-        text-decoration: underline;
-        font-weight: bold;
-    }
-
-        .final-transmission a:hover {
-            color: #ffcc00; /* 明るいオレンジ */
-        }
-
-.escape-link-container {
-    text-align: center;
-    margin-top: 40px;
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-.escape-link {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #333; /* 暗めのボタン */
-    color: #ccc;
-    text-decoration: none;
-    border: 1px solid #555;
+.timer-box {
+    background-color: #2a0000;
+    padding: 15px 20px;
     border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid #550000;
+    min-width: 80px;
+    text-align: center;
 }
 
-    .escape-link:hover {
-        background-color: #555;
-        color: #fff;
+    .timer-box span {
+        display: block;
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #ff9999;
     }
 
-/* グリッチエフェクト (メインCSSと同じでも良いが、こちらにも記述) */
+    .timer-box .label {
+        font-size: 0.8em;
+        color: #cccccc;
+        margin-top: 5px;
+    }
+
+.target-date {
+    font-size: 1.1em;
+    color: #ffb3b3;
+}
+
+.prophecy-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px #000;
+    color: #f0f0f0;
+}
+
 .glitch-text {
     font-family: 'Courier New', Courier, monospace;
     color: #ff3333;
@@ -280,5 +222,316 @@ body {
 
     100% {
         clip-path: inset(88px 0 44px 0);
+    }
+}
+
+
+.evidence-item {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(20,0,0,0.5);
+    border: 1px solid #4d0000;
+}
+
+    .evidence-item h3 {
+        font-size: 1.5em;
+        color: #ff8080;
+        margin-bottom: 10px;
+    }
+
+.evidence-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #660000;
+    margin: 10px auto;
+    display: block;
+    filter: grayscale(50%) sepia(30%) blur(0.5px);
+}
+
+.caption {
+    font-size: 0.9em;
+    color: #aaa;
+    text-align: center;
+    font-style: italic;
+}
+
+.censored {
+    background-color: #333;
+    color: #333;
+    user-select: none;
+}
+
+.highlight-text {
+    color: #ff4d4d;
+    font-weight: bold;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.contact-info {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff9933;
+    font-size: 1.1em;
+    word-break: break-all;
+}
+
+.warning-text {
+    color: #ff3333;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #ff3333;
+    padding: 10px;
+    background-color: rgba(50,0,0,0.7);
+}
+
+.action-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #550000;
+    color: #ffcccc;
+    border: 1px solid #ff3333;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+    .action-button:hover {
+        background-color: #770000;
+    }
+
+    .action-button:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+#hero-sword-game {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* 監視者絵文字スタイル */
+.watcher-emojis {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px; /* 見出しとのスペース */
+    margin-bottom: 40px; /* 剣コンテナとのスペースを増やす */
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+    .watcher-emojis .emoji {
+        font-size: 2.8em;
+        display: inline-block;
+        text-shadow: 0 0 5px rgba(255, 100, 100, 0.7);
+    }
+
+    .watcher-emojis .alien-emoji {
+        animation: alien-watch 8s infinite ease-in-out;
+    }
+
+    .watcher-emojis .cat-emoji {
+        animation: cat-watch 10s infinite ease-in-out;
+        animation-delay: -2s;
+    }
+
+@keyframes alien-watch {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    20% {
+        transform: translateY(-5px) rotate(-3deg) scale(1.05);
+    }
+
+    40% {
+        transform: translateY(0) rotate(3deg) scale(1);
+    }
+
+    60% {
+        transform: translateY(-3px) rotate(0deg) scale(1.02);
+    }
+
+    80% {
+        transform: translateY(0) rotate(2deg) scale(1);
+    }
+}
+
+@keyframes cat-watch {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scaleX(1);
+    }
+
+    25% {
+        transform: translateY(-3px) rotate(4deg) scaleX(1.05);
+    }
+
+    50% {
+        transform: translateY(0) rotate(-2deg) scaleX(1);
+    }
+
+    75% {
+        transform: translateY(-2px) rotate(1deg) scaleX(1.02);
+    }
+}
+
+
+.sword-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 0;
+}
+
+#sword-pedestal {
+    width: 150px;
+    height: 80px;
+    background: linear-gradient(to bottom, #4E342E, #3E2723);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 5px;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.sword-icon {
+    width: 50px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.5s ease-out, filter 0.5s;
+}
+
+    .sword-icon.pulling {
+        transform: translateY(-10px);
+    }
+
+    .sword-icon.pulled {
+        transform: translateY(-60px);
+        filter: drop-shadow(0 0 10px #FFFACD);
+    }
+
+    .sword-icon.stuck {
+        filter: grayscale(80%) brightness(0.7);
+    }
+
+
+#sword-message {
+    font-size: 1.1em;
+    color: #ffb3b3;
+    min-height: 40px;
+}
+
+.tweet-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed #660000;
+    text-align: center;
+}
+
+.tweet-button i {
+    margin-right: 8px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #888;
+    border-top: 1px solid #440000;
+    margin-top: 30px;
+    background-color: #110000;
+    position: relative;
+}
+
+#hidden-page-link {
+    text-decoration: none;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+#hand-emoji {
+    font-size: 1.5em;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+    animation: subtle-wave 3s infinite ease-in-out;
+}
+
+#hidden-page-link:hover #hand-emoji {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+@keyframes subtle-wave {
+    0%, 100% {
+        transform: rotate(0deg) translateY(0px);
+    }
+
+    25% {
+        transform: rotate(5deg) translateY(-2px);
+    }
+
+    50% {
+        transform: rotate(0deg) translateY(0px);
+    }
+
+    75% {
+        transform: rotate(-5deg) translateY(-2px);
+    }
+}
+
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    #countdown {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timer-box {
+        margin-bottom: 10px;
+        width: 70%;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .sword-icon {
+        width: 40px;
+        height: 120px;
+    }
+
+    #hand-emoji {
+        font-size: 1.3em;
+    }
+
+    .watcher-emojis .emoji {
+        font-size: 2.2em;
+    }
+
+    #hero-sword-game {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .watcher-emojis {
+        gap: 20px;
+        margin-top: 10px;
+        margin-bottom: 35px; /* スマホでの剣コンテナとのスペースを増やす */
     }
 }
