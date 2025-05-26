@@ -8,10 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </head>
 <body>
-    <audio id="bgm-curse" autoplay loop>
-        <source src="audio/creepy-music-box.mp3" type="audio/mpeg">
-        お使いのブラウザはオーディオ要素をサポートしていません。
+
+
+    <button class="glitch-button" id="right-ear" data-text="👉耳から入ります">👉耳から入ります</button>
+
+    <audio id="creepy-audio" loop>
+        <source src="audio/creepy_music_box.mp3" type="audio/mpeg">
+        お使いのブラウザでは audio 要素をサポートしていません。
     </audio>
+
+    <script>
+        const rightEarBtn = document.getElementById('right-ear');
+        const creepyAudio = document.getElementById('creepy-audio');
+
+        rightEarBtn.addEventListener('click', () => {
+            if (creepyAudio.paused) {
+                creepyAudio.play().catch(err => console.warn("自動再生ブロック:", err));
+            }
+        });
+    </script>
+
 
     <div class="curse-container">
         <img src="images/kage1.png"
@@ -27,6 +43,7 @@
 
         <p class="escape-link-container">
             <a href="index.html" class="escape-link" id="escape-button">……戻ル……</a>
+
         </p>
     </div>
 
@@ -34,7 +51,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const cursedImage = document.getElementById('cursed-image');
             const curseTextArea = document.getElementById('curse-text-area');
-            const curseWords = ["呪", "怨", "祟", "滅", "闇", "苦", "絶望", "逃レラレナイ", "常ニ見テイル", "ヤミーヤミーは来る"];
+            const curseWords = ["呪", "危機感", "終末は来る", "怨魚", "祟味", "滅辛", "闇胃", "病医", "苦", "狂", "絶", "黒棺", "逃レラレナイ", "常ニ見テイル", "ヤミーヤミーは来る", "屁", "死"];
             const creepingPawsContainer = document.getElementById('creeping-paws-container');
             const escapeButton = document.getElementById('escape-button'); // escape-buttonのIDを取得
 
