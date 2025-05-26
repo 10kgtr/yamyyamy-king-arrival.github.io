@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヤミーヤミーノ大王 降臨ノ刻</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <header>
+        <h1>ヤミーヤミーノ大王 降臨ノ刻</h1>
+        <p class="subtitle">ソノ日、世界ハ真ノ味ヲ知ル</p>
+    </header>
+
+    <main>
+        <section id="countdown-section">
+            <h2>降臨マデ残リ</h2>
+            <div id="countdown">
+                <div class="timer-box"><span id="days">00</span><span class="label">日</span></div>
+                <div class="timer-box"><span id="hours">00</span><span class="label">時間</span></div>
+                <div class="timer-box"><span id="minutes">00</span><span class="label">分</span></div>
+                <div class="timer-box"><span id="seconds">00</span><span class="label">秒</span></div>
+            </div>
+            <p class="target-date">目標：2025年9月1日</p>
+        </section>
+
+        <section id="prophecy">
+            <h2>禁断ノ預言</h2>
+            <div class="prophecy-text">
+                <p>古ノ石板ニ刻マレシ言葉...</p>
+                <p>「九ツノ月ガ満チル時、甘美ナル終焉ノ使者、ヤミーヤミーノ大王、世界ヲ覆イ尽クス。」</p>
+                <p>目ヲ覚マセ。ソノ日ハ近イ。</p>
+                <p class="glitch-text" data-text="備エヨ…備エヨ…">備エヨ…備エヨ…</p>
+            </div>
+        </section>
+
+        <section id="hero-sword-game">
+            <h2>セカイヲ救ウ唯一ノ希望？</h2>
+            <div class="watcher-emojis">
+                <span class="emoji alien-emoji" title="監視中...">👽</span>
+                <span class="emoji cat-emoji" title="ニャルホド...">😼</span>
+            </div>
+            <div class="sword-container">
+                <div id="sword-pedestal">
+                    <svg id="hero-sword" viewBox="0 0 100 300" width="100" height="300" class="sword-icon">
+                        <rect x="40" y="0" width="20" height="50" fill="#5D4037" />
+                        <rect x="30" y="40" width="40" height="15" fill="#4E342E" />
+                        <polygon points="50,55 45,280 50,300 55,280" fill="#B0BEC5" />
+                        <line x1="50" y1="55" x2="50" y2="290" stroke="#78909C" stroke-width="2" />
+                    </svg>
+                </div>
+                <p id="sword-message">古の台座に突き刺さる剣がある...。世界を救う鍵となるか？</p>
+                <button id="pull-sword-button" class="action-button">剣を抜こうと試みる</button>
+            </div>
+        </section>
+
+        <section id="evidence">
+            <h2>大王存在ノ証拠トサレルモノ</h2>
+            <article class="evidence-item">
+                <h3>異次元ノ食レポ？</h3>
+                <p>世界各地で報告される「未知の美味」の噂。それは大王の先触れか、あるいは…？ テキストはここで<span class="censored">■■■</span>検閲により一部不明瞭<span class="censored">■■■</span>。</p>
+                <img src="https://placehold.co/600x400/2a0000/ff9999?text=謎ノ食材"
+                     alt="謎の食べ物の画像（プレースホルダー）"
+                     class="evidence-image"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a0000/cc0000?text=画像読込失敗';">
+                <p class="caption">（画像：深淵より現れし未知の食材とされるもの）</p>
+            </article>
+            <article class="evidence-item">
+                <h3>囁カレル「ヤミー教団」</h3>
+                <p>大王の到来を待ち望む秘密結社が存在するという。彼らは夜な夜な集い、<span class="highlight-text">禁断のレシピ</span>を研究しているとの情報も…。詳細は追って報告する。</p>
+            </article>
+        </section>
+
+        <section id="call-to-action">
+            <h2>覚醒セシ者タチヘ</h2>
+            <p>汝、大王ノ到来ヲ信ジルカ？</p>
+            <p>目撃情報、奇妙ナ出来事ヲ報告セヨ。我々ハ監視シテイル。</p>
+            <p class="contact-info">[ contact@yummy-king-truth.xxx ] (このメールアドレスは架空のものです)</p>
+
+            <div class="tweet-section">
+                <p class="warning-text" style="font-size: 0.9em; margin-bottom:10px;">警告：以下のリンクは「真実」を歪める可能性があります。</p>
+                <a id="tweet-link" href="#" class="action-button tweet-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter"></i> このサイトの「嘘」を暴露する
+                </a>
+                <p style="font-size:0.8em; color:#aaa; margin-top:5px;">（Xで「このサイトはガセ。拡散しないで」と呟く）</p>
+            </div>
+            <p class="warning-text" style="margin-top:20px;">注意：この領域へのアクセスは自己責任において行われるものとする。</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2025 ヤミーヤミーノ大王 観測委員会 (仮)。 全テノ情報ハ「真実」ニ基ヅクモノトハ限ラナイ。
+            <a href="curse.html" id="hidden-page-link" aria-label="秘密のページ" title="何だコレ…？">
+                <span id="hand-emoji">👇</span>
+            </a>
+            <a href="dr_himedime_notes.html" id="new-hidden-page-link" aria-label="博士の研究室" title="禁断の研究…？">
+                <span id="test-tube-emoji">🧪</span>
+            </a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

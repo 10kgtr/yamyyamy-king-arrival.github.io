@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呪詛ノ間</title>
+    <link rel="stylesheet" href="curse_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="curse-container">
+        <img src="https://placehold.co/300x400/000000/cc0000?text=呪&font=creepster"
+             alt="呪ワレシカゲキンノ肖像"
+             id="cursed-image"
+             onerror="this.onerror=null;this.src='https://placehold.co/300x400/111111/ff0000?text=ERROR&font=creepster';">
+
+        <div class="curse-text" id="curse-text-area">
+        </div>
+        <p class="escape-link-container">
+            <a href="index.html" class="escape-link">……戻ル……</a>
+        </p>
+    </div>
+
+    <script>
+        const cursedImage = document.getElementById('cursed-image');
+        const curseTextArea = document.getElementById('curse-text-area');
+        const curseWords = ["呪", "怨", "祟", "滅", "闇", "苦", "絶望", "逃レラレナイ", "常ニ見テイル", "オ前モ仲間イリ"];
+
+        // 画像を揺らす
+        setInterval(() => {
+            const x = Math.random() * 10 - 5; // -5px to 5px
+            const y = Math.random() * 10 - 5; // -5px to 5px
+            if (cursedImage) {
+                cursedImage.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        }, 200);
+
+        // 呪いの言葉をランダムに表示
+        function addCurseWord() {
+            if (!curseTextArea) return;
+            const word = curseWords[Math.floor(Math.random() * curseWords.length)];
+            const span = document.createElement('span');
+            span.textContent = word;
+            span.style.position = 'absolute';
+            span.style.left = `${Math.random() * 90}%`; // 画面内にランダム配置
+            span.style.top = `${Math.random() * 90}%`;
+            span.style.fontSize = `${1 + Math.random() * 2}em`; // 1em to 3em
+            span.style.color = `rgba(255, 0, 0, ${0.3 + Math.random() * 0.7})`; // 赤系のランダムな透明度
+            span.style.transform = `rotate(${Math.random() * 60 - 30}deg)`; // ランダムな回転
+            span.style.fontFamily = "'Creepster', cursive";
+            span.style.textShadow = "1px 1px 3px black";
+            curseTextArea.appendChild(span);
+
+            // 古い言葉を消す (最大20個まで表示)
+            if (curseTextArea.children.length > 20) {
+                curseTextArea.removeChild(curseTextArea.firstChild);
+            }
+        }
+        if (curseTextArea) {
+            setInterval(addCurseWord, 700); // 0.7秒ごとに言葉を追加
+        }
+
+        // ページタイトルを点滅させる (おまけ)
+        let originalTitle = document.title;
+        let isTitleCursed = false;
+        setInterval(() => {
+            if (isTitleCursed) {
+                document.title = originalTitle;
+            } else {
+                let cursedTitle = "";
+                for (let i = 0; i < originalTitle.length; i++) {
+                    cursedTitle += Math.random() < 0.5 ? curseWords[Math.floor(Math.random() * 3)] : originalTitle[i];
+                }
+                document.title = cursedTitle.substring(0, originalTitle.length + 2);
+            }
+            isTitleCursed = !isTitleCursed;
+        }, 1500);
+
+    </script>
+</body>
+</html>
