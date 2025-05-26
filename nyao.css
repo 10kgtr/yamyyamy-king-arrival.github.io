@@ -1,0 +1,454 @@
+﻿/* FILE: style.css */
+body {
+    font-family: 'DotGothic16', sans-serif;
+    background-color: #000000; /* ブラック */
+    color: #00FF00; /* 蛍光グリーン */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 横スクロール防止 */
+    position: relative; /* 背景要素の基準点 */
+}
+
+    body::before { /* カゲキン博士の透かし画像 */
+        content: "";
+        background-image: url('https://placehold.co/1200x800/000000/1A1A1A?text=KAGEKIN_Silhouette');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* 背景画像を固定 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.08; /* 透明度を低めに */
+        z-index: -2; /* 他の背景要素よりもさらに後ろ */
+    }
+
+.background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* コンテンツの背後 */
+    overflow: hidden; /* はみ出し防止 */
+}
+
+.bg-deco {
+    position: absolute;
+    opacity: 0.3;
+    animation: float 15s infinite ease-in-out alternate;
+}
+
+.deco-eye-1 {
+    top: 10%;
+    left: 5%;
+    width: 50px;
+    height: 50px;
+    animation-duration: 12s;
+}
+
+.deco-cat-1 {
+    top: 70%;
+    left: 15%;
+    width: 60px;
+    height: 60px;
+    animation-duration: 18s;
+}
+
+.deco-swirl-1 {
+    top: 40%;
+    left: 80%;
+    width: 40px;
+    height: 40px;
+    animation-duration: 10s;
+}
+
+.deco-gif-1 {
+    top: 20%;
+    right: 5%;
+    width: 150px;
+    height: 100px;
+    opacity: 0.2;
+    animation-duration: 20s;
+}
+
+.deco-gif-2 {
+    bottom: 10%;
+    left: 5%;
+    width: 120px;
+    height: 150px;
+    opacity: 0.2;
+    animation-duration: 22s;
+}
+/* さらに多くの .bg-deco を追加してランダム感を出す */
+.bg-deco.deco-eye-2 {
+    top: 80%;
+    left: 85%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 13s;
+    background-image: url('https://placehold.co/30x30/00FF00/000000?text=👁️');
+}
+
+.bg-deco.deco-cat-2 {
+    top: 5%;
+    left: 40%;
+    width: 45px;
+    height: 45px;
+    animation-duration: 16s;
+    background-image: url('https://placehold.co/45x45/8A2BE2/FFFFFF?text=🐾');
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(-10deg);
+    }
+}
+
+
+header {
+    background-color: rgba(128, 0, 128, 0.3); /* 紫、半透明 */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #FF00FF; /* ネオンピンク */
+}
+
+    header h1 {
+        font-family: 'Creepster', cursive;
+        font-size: 3em;
+        color: #FF00FF; /* ネオンピンク */
+        text-shadow: 0 0 5px #FF00FF, 0 0 10px #FF00FF, 0 0 15px #FFFFFF;
+        margin: 0;
+    }
+
+    header .subtitle {
+        color: #00FF00; /* 蛍光グリーン */
+        font-size: 1.2em;
+        margin-top: 5px;
+    }
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+    nav ul li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+        nav ul li a {
+            color: #00FF00; /* 蛍光グリーン */
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+            nav ul li a:hover, nav ul li a:focus {
+                color: #FF00FF; /* ネオンピンク */
+                border-color: #FF00FF;
+                text-shadow: 0 0 5px #FF00FF;
+                background-color: rgba(255, 0, 255, 0.1);
+            }
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: rgba(10, 10, 10, 0.8); /*ほぼ黒、半透明 */
+    border: 1px solid #8A2BE2; /* 紫 */
+    box-shadow: 0 0 15px #8A2BE2;
+    border-radius: 8px;
+}
+
+section, article {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px dashed #00FF00; /* 蛍光グリーン */
+    background-color: rgba(0,0,0,0.7);
+}
+
+h2 {
+    font-family: 'Creepster', cursive;
+    color: #FF00FF; /* ネオンピンク */
+    font-size: 2em;
+    text-align: center;
+    border-bottom: 1px solid #8A2BE2; /* 紫 */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-family: 'Creepster', cursive;
+    color: #00FF00; /* 蛍光グリーン */
+    font-size: 1.5em;
+}
+
+p, li, blockquote, label {
+    line-height: 1.7;
+    font-size: 1.1em;
+}
+
+a {
+    color: #FF00FF; /* ネオンピンク */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover, a:focus {
+        color: #00FF00; /* 蛍光グリーン */
+        text-decoration: underline;
+    }
+
+.main-image, .page-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #00FF00; /* 蛍光グリーン */
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.profile-image {
+    float: right;
+    margin-left: 20px;
+    max-width: 200px; /* プロフィール画像は小さめに */
+}
+
+
+#countdown {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px dashed #FF00FF;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.neon-text-pink {
+    color: #FF00FF;
+    text-shadow: 0 0 3px #FF00FF, 0 0 5px #FF00FF, 0 0 7px #FFFFFF;
+}
+
+.neon-text-green {
+    color: #00FF00;
+    text-shadow: 0 0 3px #00FF00, 0 0 5px #00FF00, 0 0 7px #FFFFFF;
+}
+
+blockquote {
+    border-left: 5px solid #8A2BE2; /* 紫 */
+    padding-left: 15px;
+    margin: 20px;
+    font-style: italic;
+    background-color: rgba(128,0,128,0.1);
+}
+
+.warning-text {
+    color: #FF0000; /* 赤 */
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.3em;
+    border: 2px solid #FF0000;
+    padding: 10px;
+    background-color: rgba(255,0,0,0.1);
+}
+
+.evidence-text {
+    color: #FFFF00; /* 黄色 */
+    font-style: italic;
+    border: 1px dashed #FFFF00;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.forbidden-links li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #444;
+    background-color: rgba(50,0,50,0.3); /* 暗い紫 */
+    display: flex;
+    align-items: center;
+}
+
+.link-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border: 1px solid #FF00FF;
+}
+
+.personality-list li {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px dotted #8A2BE2;
+    display: flex;
+    align-items: center;
+}
+
+.personality-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid #00FF00;
+}
+
+
+/* Contact Form */
+#contact-form div {
+    margin-bottom: 15px;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00FF00;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: calc(100% - 22px); /* padding and border */
+    padding: 10px;
+    background-color: #111;
+    border: 1px solid #8A2BE2;
+    color: #00FF00;
+    border-radius: 4px;
+}
+
+#contact-form input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+#contact-form button[type="submit"] {
+    background-color: #FF00FF;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Creepster', cursive;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #FF00FF;
+}
+
+    #contact-form button[type="submit"]:hover {
+        background-color: #00FF00;
+        color: #000000;
+        box-shadow: 0 0 15px #00FF00;
+    }
+
+#form-response {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed #FF00FF;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+
+/* Popup */
+.popup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: #111111;
+    color: #FF00FF;
+    border: 3px solid #00FF00;
+    box-shadow: 0 0 20px #FF00FF;
+    padding: 25px;
+    z-index: 1000;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.popup-content {
+    position: relative;
+}
+
+.popup-image {
+    max-width: 80%;
+    margin-top: 15px;
+    border: 2px solid #8A2BE2;
+}
+
+.close-btn {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 2em;
+    color: #00FF00;
+    cursor: pointer;
+    font-family: 'Creepster', cursive;
+}
+
+    .close-btn:hover {
+        color: #FF00FF;
+    }
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border-top: 3px solid #8A2BE2; /* 紫 */
+    color: #8A2BE2;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .profile-image {
+        float: none;
+        display: block;
+        margin: 10px auto;
+    }
+}
+
+/* Specific page styling for Kagekin personality pages */
+body.personality-page header h1 { /* Simpler header for sub-pages */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+body.personality-page nav ul li a {
+    font-size: 1em;
+}
+
+body.personality-page main {
+    margin-top: 10px;
+    padding: 15px;
+}
+
+body.personality-page section {
+    border: 1px dashed #FF00FF;
+}
