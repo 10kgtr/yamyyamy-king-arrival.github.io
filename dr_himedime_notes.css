@@ -1,0 +1,284 @@
+/* dr_himedime_notes.css */
+
+body {
+    background-color: #1a1a1a; /* 暗い背景 */
+    color: #c0c0c0; /* やや明るいグレーの文字 */
+    font-family: 'Courier New', Courier, monospace; /* タイプライター風フォント */
+    line-height: 1.7;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 上からコンテンツを表示 */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #222; /* 少し明るい背景でコンテンツエリアを区別 */
+    padding: 25px 35px;
+    border: 1px solid #444;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    max-width: 800px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #cc0000; /* 濃い赤の破線 */
+    padding-bottom: 15px;
+}
+
+    .page-header h1 {
+        font-family: 'Creepster', cursive;
+        color: #ff4136; /* 明るい赤 */
+        font-size: 2.5em; /* 少し大きめ */
+        margin-bottom: 5px;
+        text-shadow: 1px 1px 3px #000;
+    }
+
+.researcher-name {
+    font-style: italic;
+    color: #999;
+    font-size: 0.9em;
+}
+
+#introduction {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #282828;
+    border-left: 3px solid #ff4d4d;
+}
+
+    #introduction h2 {
+        font-size: 1.8em;
+        color: #ff8080;
+        border-bottom: none;
+        margin-bottom: 10px;
+    }
+
+.entry {
+    margin-bottom: 35px;
+    padding: 20px;
+    border: 1px solid #3a3a3a; /* 暗めのボーダー */
+    background-color: #1e1e1e; /* エントリの背景をさらに暗く */
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.entry-header {
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #777;
+    padding-bottom: 10px;
+}
+
+.entry-title {
+    font-family: 'Noto Serif JP', serif; /* 少し読みやすいフォントに変更 */
+    font-size: 1.6em;
+    color: #ffd700; /* ゴールドっぽい色 */
+    margin-bottom: 5px;
+}
+
+.entry-date {
+    font-size: 0.85em;
+    color: #888;
+    font-style: italic;
+}
+
+.entry-content p {
+    margin-bottom: 12px;
+    text-align: justify;
+    text-indent: 1.5em; /* 段落の最初にインデント */
+}
+
+.entry-image {
+    max-width: 80%; /* 画像が大きすぎないように */
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #555;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    filter: sepia(0.3) contrast(1.1) brightness(0.9); /* 古びた写真風 */
+}
+
+.small-image {
+    max-width: 250px;
+}
+
+.highlight {
+    background-color: #444; /* 暗い背景に合うハイライト */
+    color: #ffeb3b;
+    padding: 0 3px;
+    font-weight: bold;
+}
+
+.warning-text { /* 既存のスタイルと重複しないように調整 */
+    color: #ff6961; /* 少し柔らかい赤 */
+    font-weight: bold;
+    border: 1px dashed #ff6961;
+    padding: 5px;
+    display: inline-block;
+    background-color: rgba(255, 105, 97, 0.1);
+}
+
+.yummy-takeover {
+    color: #ff3333; /* 強烈な赤 */
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.3em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: yummy-pulse-strong 0.3s infinite alternate;
+}
+
+@keyframes yummy-pulse-strong {
+    from {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.final-thoughts {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #101010;
+    border: 1px solid #770000; /* 濃い赤のボーダー */
+    color: #ff8080;
+}
+
+    .final-thoughts strong {
+        color: #ff4d4d;
+    }
+
+.final-transmission {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed #ff0000; /* より目立つボーダー */
+    background-color: rgba(100, 0, 0, 0.2); /* 暗い赤の背景 */
+    text-align: center;
+}
+
+    .final-transmission a {
+        color: #ffa500; /* オレンジ色 */
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+        .final-transmission a:hover {
+            color: #ffcc00; /* 明るいオレンジ */
+        }
+
+.escape-link-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.escape-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #333; /* 暗めのボタン */
+    color: #ccc;
+    text-decoration: none;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .escape-link:hover {
+        background-color: #555;
+        color: #fff;
+    }
+
+/* グリッチエフェクト (メインCSSと同じでも良いが、こちらにも記述) */
+.glitch-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff3333;
+    font-weight: bold;
+    position: relative;
+    animation: glitch 1.5s infinite;
+}
+
+    .glitch-text::before,
+    .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 red;
+        animation: glitch-anim1 2s infinite linear alternate-reverse;
+    }
+
+    .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 blue;
+        animation: glitch-anim2 2s infinite linear alternate-reverse;
+    }
+
+@keyframes glitch-anim1 {
+    0% {
+        clip-path: inset(79px 0 8px 0);
+    }
+
+    20% {
+        clip-path: inset(17px 0 55px 0);
+    }
+
+    40% {
+        clip-path: inset(33px 0 14px 0);
+    }
+
+    60% {
+        clip-path: inset(62px 0 72px 0);
+    }
+
+    80% {
+        clip-path: inset(39px 0 50px 0);
+    }
+
+    100% {
+        clip-path: inset(29px 0 81px 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip-path: inset(35px 0 26px 0);
+    }
+
+    20% {
+        clip-path: inset(72px 0 5px 0);
+    }
+
+    40% {
+        clip-path: inset(18px 0 82px 0);
+    }
+
+    60% {
+        clip-path: inset(50px 0 2px 0);
+    }
+
+    80% {
+        clip-path: inset(41px 0 60px 0);
+    }
+
+    100% {
+        clip-path: inset(88px 0 44px 0);
+    }
+}

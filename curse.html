@@ -8,74 +8,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </head>
 <body>
+    <audio id="bgm-curse" autoplay loop>
+        <source src="audio/creepy_music_box.mp3" type="audio/mpeg">
+        お使いのブラウザはオーディオ要素をサポートしていません。
+    </audio>
+
     <div class="curse-container">
-        <img src="https://placehold.co/300x400/000000/cc0000?text=呪&font=creepster"
+        <img src="images/kage1.png"
              alt="呪ワレシカゲキンノ肖像"
              id="cursed-image"
-             onerror="this.onerror=null;this.src='https://placehold.co/300x400/111111/ff0000?text=ERROR&font=creepster';">
-
-        <div class="curse-text" id="curse-text-area">
+             onerror="this.onerror=null;this.src='https://via.placeholder.com/300x300/000000/FF0000?text=画像読込エラー';"> <div class="curse-text" id="curse-text-area">
         </div>
+
+        <div id="creeping-paws-container">
+        </div>
+
         <p class="escape-link-container">
             <a href="index.html" class="escape-link">……戻ル……</a>
         </p>
     </div>
 
     <script>
-        const cursedImage = document.getElementById('cursed-image');
-        const curseTextArea = document.getElementById('curse-text-area');
-        const curseWords = ["呪", "怨", "祟", "滅", "闇", "苦", "絶望", "逃レラレナイ", "常ニ見テイル", "オ前モ仲間イリ"];
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursedImage = document.getElementById('cursed-image');
+            const curseTextArea = document.getElementById('curse-text-area');
+            const curseWords = ["呪", "怨", "祟", "滅", "闇", "苦", "絶望", "逃レラレナイ", "常ニ見テイル", "ヤミーヤミーは来る"];
+            const creepingPawsContainer = document.getElementById('creeping-paws-container');
 
-        // 画像を揺らす
-        setInterval(() => {
-            const x = Math.random() * 10 - 5; // -5px to 5px
-            const y = Math.random() * 10 - 5; // -5px to 5px
+            // 画像を揺らす
             if (cursedImage) {
-                cursedImage.style.transform = `translate(${x}px, ${y}px)`;
+                setInterval(() => {
+                    const x = Math.random() * 6 - 3; // 少し控えめに
+                    const y = Math.random() * 6 - 3;
+                    cursedImage.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 1 - 0.5}deg)`;
+                }, 250);
             }
-        }, 200);
 
-        // 呪いの言葉をランダムに表示
-        function addCurseWord() {
-            if (!curseTextArea) return;
-            const word = curseWords[Math.floor(Math.random() * curseWords.length)];
-            const span = document.createElement('span');
-            span.textContent = word;
-            span.style.position = 'absolute';
-            span.style.left = `${Math.random() * 90}%`; // 画面内にランダム配置
-            span.style.top = `${Math.random() * 90}%`;
-            span.style.fontSize = `${1 + Math.random() * 2}em`; // 1em to 3em
-            span.style.color = `rgba(255, 0, 0, ${0.3 + Math.random() * 0.7})`; // 赤系のランダムな透明度
-            span.style.transform = `rotate(${Math.random() * 60 - 30}deg)`; // ランダムな回転
-            span.style.fontFamily = "'Creepster', cursive";
-            span.style.textShadow = "1px 1px 3px black";
-            curseTextArea.appendChild(span);
+            // 呪いの言葉をランダムに表示
+            if (curseTextArea) {
+                setInterval(() => {
+                    const word = curseWords[Math.floor(Math.random() * curseWords.length)];
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    span.style.position = 'absolute';
+                    span.style.left = `${Math.random() * 80 + 10}%`;
+                    span.style.top = `${Math.random() * 80 + 10}%`;
+                    span.style.fontSize = `${Math.random() * 1.5 + 1}em`;
+                    span.style.color = `rgba(200, 0, 0, ${0.2 + Math.random() * 0.5})`;
+                    span.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+                    span.style.fontFamily = "'Creepster', cursive";
+                    span.style.textShadow = "1px 1px 2px #000";
+                    span.style.zIndex = 1;
+                    curseTextArea.appendChild(span);
 
-            // 古い言葉を消す (最大20個まで表示)
-            if (curseTextArea.children.length > 20) {
-                curseTextArea.removeChild(curseTextArea.firstChild);
+                    if (curseTextArea.children.length > 15) {
+                        curseTextArea.removeChild(curseTextArea.firstChild);
+                    }
+                }, 700);
             }
-        }
-        if (curseTextArea) {
-            setInterval(addCurseWord, 700); // 0.7秒ごとに言葉を追加
-        }
 
-        // ページタイトルを点滅させる (おまけ)
-        let originalTitle = document.title;
-        let isTitleCursed = false;
-        setInterval(() => {
-            if (isTitleCursed) {
-                document.title = originalTitle;
-            } else {
-                let cursedTitle = "";
-                for (let i = 0; i < originalTitle.length; i++) {
-                    cursedTitle += Math.random() < 0.5 ? curseWords[Math.floor(Math.random() * 3)] : originalTitle[i];
+            // うごめく猫の手を追加
+            if (creepingPawsContainer) {
+                const numberOfPaws = 10; // 表示する猫の手の数
+                for (let i = 0; i < numberOfPaws; i++) {
+                    const paw = document.createElement('div');
+                    paw.classList.add('creeping-paw');
+                    // 初期位置を画面の端にランダムに設定
+                    const side = Math.floor(Math.random() * 4); // 0: top, 1: right, 2: bottom, 3: left
+                    switch (side) {
+                        case 0: // top
+                            paw.style.top = '-50px';
+                            paw.style.left = `${Math.random() * 100}vw`;
+                            break;
+                        case 1: // right
+                            paw.style.top = `${Math.random() * 100}vh`;
+                            paw.style.left = '100vw';
+                            break;
+                        case 2: // bottom
+                            paw.style.top = '100vh';
+                            paw.style.left = `${Math.random() * 100}vw`;
+                            break;
+                        case 3: // left
+                            paw.style.top = `${Math.random() * 100}vh`;
+                            paw.style.left = '-50px';
+                            break;
+                    }
+                    paw.style.animationDelay = `${Math.random() * 5}s`; // 開始タイミングをずらす
+                    paw.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`); // カスタムプロパティでランダムな動き
+                    paw.style.setProperty('--random-y', `${Math.random() * 100 - 50}px`);
+                    creepingPawsContainer.appendChild(paw);
                 }
-                document.title = cursedTitle.substring(0, originalTitle.length + 2);
             }
-            isTitleCursed = !isTitleCursed;
-        }, 1500);
 
+            // ページタイトルを点滅させる
+            let originalTitle = document.title;
+            let isTitleCursed = false;
+            setInterval(() => {
+                if (isTitleCursed) {
+                    document.title = originalTitle;
+                } else {
+                    let cursedTitle = "";
+                    for (let i = 0; i < originalTitle.length; i++) {
+                        cursedTitle += Math.random() < 0.5 ? curseWords[Math.floor(Math.random() * 3)] : originalTitle[i];
+                    }
+                    document.title = cursedTitle.substring(0, originalTitle.length + 2);
+                }
+                isTitleCursed = !isTitleCursed;
+            }, 1500);
+        });
     </script>
 </body>
 </html>
