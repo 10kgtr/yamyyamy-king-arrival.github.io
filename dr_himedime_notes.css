@@ -1,503 +1,270 @@
-/* dr_himedime_style.css */
-
-/* 全体的な不気味な雰囲気とサイケデリックな色彩 */
+/* フォントと背景ベース設定 */
 body {
-    font-family: 'Kosugi Maru', sans-serif;
-    background-color: #1a001a; /* 深い紫 */
-    color: #e0e0e0; /* 薄い灰色 */
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* 横スクロールバーを隠す */
-    animation: backgroundShift 60s infinite linear, glitch-body 15s infinite alternate;
+    background: linear-gradient(135deg, #000000, #111111);
+    color: #fdfdfd;
+    font-family: 'Kosugi Maru', sans-serif;
+    background-image: radial-gradient(circle, #220022 0%, #000000 80%);
+    overflow-x: hidden;
 }
 
-@keyframes backgroundShift {
-    0% {
-        background-color: #1a001a;
-    }
-
-    25% {
-        background-color: #001a1a;
-    }
-
-    50% {
-        background-color: #1a1a00;
-    }
-
-    75% {
-        background-color: #1a0000;
-    }
-
-    100% {
-        background-color: #1a001a;
-    }
-}
-
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 15px;
-    background: rgba(10, 0, 10, 0.85); /* 半透明の濃い紫 */
-    border: 3px double #ff00ff; /* マゼンタの二重線 */
-    box-shadow: 0 0 25px #ff00ff, 0 0 40px #00ffff inset; /* マゼンタとシアンのグロー */
-    animation: pulse-border 4s infinite alternate;
-}
-
-@keyframes pulse-border {
-    0% {
-        border-color: #ff00ff;
-        box-shadow: 0 0 25px #ff00ff, 0 0 40px #00ffff inset;
-    }
-
-    50% {
-        border-color: #00ffff;
-        box-shadow: 0 0 35px #00ffff, 0 0 30px #ff00ff inset;
-    }
-
-    100% {
-        border-color: #ff00ff;
-        box-shadow: 0 0 25px #ff00ff, 0 0 40px #00ffff inset;
-    }
-}
-
-/* ヘッダー - 博士の名前とタイトル */
+/* ページタイトル */
 .page-header {
     text-align: center;
-    border-bottom: 2px dashed #ffff00; /* 黄色の破線 */
-    padding-bottom: 15px;
-    margin-bottom: 25px;
-    animation: text-flicker 3s infinite;
+    background: linear-gradient(45deg, #ff00cc, #3300ff);
+    padding: 2em 1em;
+    color: #ffffff;
+    text-shadow: 0 0 10px #ff00cc, 0 0 20px #3300ff;
+    border-bottom: 4px double #ffcc00;
+    animation: pulse-header 6s infinite alternate;
 }
 
-    .page-header h1 {
-        font-family: 'Creepster', cursive;
-        font-size: 2.8em;
-        color: #ff33cc; /* 強烈なピンク */
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00de, 0 0 20px #ff00de, 0 0 25px #ff00de, 0 0 30px #ff00de, 0 0 35px #ff00de;
-        margin-bottom: 5px;
-        letter-spacing: 2px;
-    }
-
+/* 研究者名 */
 .researcher-name {
-    font-size: 1.1em;
-    color: #a0a0a0; /* やや暗い灰色 */
-    font-style: italic;
-    letter-spacing: 1px;
+    font-size: 1.2em;
+    color: #ccff00;
+    text-shadow: 0 0 3px #000;
 }
 
-/* 各研究エントリー */
+/* 記事枠 */
 .journal-entry {
-    background: rgba(20, 20, 40, 0.7); /* 半透明の暗い青紫 */
-    margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #440044; /* 暗い紫の境界線 */
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-    position: relative; /* 擬似要素用 */
-    overflow: hidden; /* 擬似要素がはみ出ないように */
+    background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(30,0,50,0.8));
+    border: 2px solid #00ffff;
+    border-radius: 12px;
+    margin: 2em auto;
+    padding: 2em;
+    max-width: 800px;
+    box-shadow: 0 0 20px #ff00ff;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
-    .journal-entry::before {
-        content: "秘"; /* 秘密の印 */
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        font-size: 50px;
-        color: rgba(255, 0, 0, 0.2); /* 薄い赤 */
-        font-family: 'Times New Roman', serif; /* それっぽいフォント */
-        transform: rotate(-15deg);
-        z-index: 0;
+    .journal-entry:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 30px #00ffff;
     }
 
-.entry-header {
-    margin-bottom: 15px;
-}
-
+/* セクションタイトル */
 .entry-title {
+    color: #ffcc00;
     font-family: 'Creepster', cursive;
-    font-size: 1.8em;
-    color: #33ff33; /* 明るい緑 */
-    text-shadow: 0 0 8px #00ff00;
-    margin-bottom: 5px;
-    animation: title-glitch 7s infinite steps(5, end);
+    text-shadow: 0 0 5px #ff00ff;
 }
 
-@keyframes title-glitch {
-    0%, 100% {
-        transform: skewX(0deg);
-        color: #33ff33;
-    }
-
-    20% {
-        transform: skewX(-5deg);
-        color: #ff33ff;
-    }
-
-    40% {
-        transform: skewX(5deg);
-        color: #ffff33;
-    }
-
-    60% {
-        transform: skewX(-3deg);
-        color: #33ffff;
-    }
-
-    80% {
-        transform: skewX(3deg);
-        color: #ff9933;
-    }
-}
-
-
+/* 日付表示 */
 .entry-date {
     font-size: 0.9em;
-    color: #cccccc; /* 明るい灰色 */
-    text-align: right;
+    color: #999;
+    font-style: italic;
 }
 
+/* 記事本文 */
 .entry-content p {
-    line-height: 1.7;
-    margin-bottom: 15px;
-    color: #d0d0ff; /* 薄い青紫 */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    line-height: 1.8;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: #f0f0f0;
 }
 
-    .entry-content p:first-letter {
-        font-size: 1.5em;
-        color: #ff6666; /* 赤みがかった色 */
-        font-weight: bold;
-        margin-right: 2px;
-    }
-
+/* 画像 */
 .entry-image {
-    display: block;
-    max-width: 80%;
-    margin: 20px auto;
-    border: 5px groove #ffcc00; /* 金色の溝線 */
-    filter: sepia(0.3) contrast(1.1) brightness(0.9) hue-rotate(330deg); /* 古びた、かつ不気味なフィルター */
-    box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
-    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+    max-width: 100%;
+    border: 3px double #ff66ff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ff00cc;
+    margin: 1em 0;
 }
-
-    .entry-image:hover {
-        transform: scale(1.05) rotate(-2deg);
-        filter: sepia(0.1) contrast(1.3) brightness(1.1) hue-rotate(0deg);
-    }
 
 .small-image {
-    max-width: 60%;
-    float: right;
-    margin-left: 15px;
+    width: 60%;
 }
 
-/* 最終エントリーとホラー演出 */
+/* 最終ファイル：ホラー演出 */
 .final-entry {
-    background: #000000; /* 真っ黒 */
-    border: 3px solid #ff0000; /* 赤い境界線 */
-    box-shadow: 0 0 30px #ff0000, 0 0 50px #ff0000 inset;
-    animation: final-pulse 1s infinite, screen-shake 0.5s infinite;
-}
-
-@keyframes final-pulse {
-    0% {
-        box-shadow: 0 0 30px #ff0000, 0 0 50px #ff0000 inset;
-    }
-
-    50% {
-        box-shadow: 0 0 40px #aa0000, 0 0 60px #aa0000 inset, 0 0 5px #ffffff;
-    }
-
-    100% {
-        box-shadow: 0 0 30px #ff0000, 0 0 50px #ff0000 inset;
-    }
-}
-
-@keyframes screen-shake {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0);
-    }
-
-    10% {
-        transform: translate(-2px, -3px) rotate(-0.5deg);
-    }
-
-    20% {
-        transform: translate(3px, 2px) rotate(0.5deg);
-    }
-
-    30% {
-        transform: translate(-1px, 3px) rotate(-0.3deg);
-    }
-
-    40% {
-        transform: translate(2px, -2px) rotate(0.3deg);
-    }
-
-    50% {
-        transform: translate(-3px, 1px) rotate(-0.5deg);
-    }
-
-    60% {
-        transform: translate(1px, -3px) rotate(0.5deg);
-    }
-
-    70% {
-        transform: translate(-2px, 2px) rotate(-0.3deg);
-    }
-
-    80% {
-        transform: translate(3px, -1px) rotate(0.3deg);
-    }
-
-    90% {
-        transform: translate(-1px, 3px) rotate(-0.5deg);
-    }
-}
-
-
-.final-entry .entry-title {
-    color: #ff0000; /* 真っ赤 */
-    text-shadow: 0 0 10px #ff0000, 0 0 20px #ffffff;
-    animation: blood-text 1.5s infinite alternate;
-}
-
-@keyframes blood-text {
-    from {
-        text-shadow: 0 0 10px #ff0000, 0 0 20px #ffffff, 0 0 5px #ff0000;
-    }
-
-    to {
-        text-shadow: 0 0 15px #ff0000, 0 0 30px #ffcccc, 0 0 10px #ff0000;
-        letter-spacing: 3px;
-    }
+    background: black;
+    color: #ff0033;
+    font-family: 'Creepster', cursive;
+    animation: flicker 0.15s infinite alternate;
+    border: 3px solid #ff0033;
 }
 
 .yummy-takeover {
-    font-family: 'Creepster', cursive;
-    font-size: 2em;
-    color: #ff0000 !important; /* 強制的に赤 */
+    font-size: 1.3em;
     text-align: center;
-    letter-spacing: 3px;
-    word-spacing: 10px;
-    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 0 15px #ff0000, 0 0 25px #ff0000;
-    animation: yummy-scream 0.3s infinite, yummy-color-glitch 2s infinite linear;
-    line-height: 1.2 !important; /* 上書き */
+    text-shadow: 0 0 5px red, 0 0 10px black;
+    animation: blood-blink 0.4s infinite;
 }
-
-@keyframes yummy-scream {
-    0%, 100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-
-    25% {
-        transform: scale(1.05) rotate(-2deg);
-        opacity: 0.8;
-    }
-
-    50% {
-        transform: scale(0.95) rotate(2deg);
-        opacity: 1;
-    }
-
-    75% {
-        transform: scale(1.1) rotate(-1deg);
-        opacity: 0.7;
-    }
-}
-
-@keyframes yummy-color-glitch {
-    0% {
-        color: #ff0000;
-    }
-
-    10% {
-        color: #ff6600;
-    }
-
-    20% {
-        color: #ffff00;
-    }
-
-    30% {
-        color: #00ff00;
-    }
-
-    40% {
-        color: #00ffff;
-    }
-
-    50% {
-        color: #0000ff;
-    }
-
-    60% {
-        color: #ff00ff;
-    }
-
-    70% {
-        color: #ff3399;
-    }
-
-    80% {
-        color: #cc00ff;
-    }
-
-    90% {
-        color: #6600cc;
-    }
-
-    100% {
-        color: #ff0000;
-    }
-}
-
 
 .final-transmission {
+    font-size: 1em;
     text-align: center;
-    margin-top: 30px;
-    padding: 10px;
-    border: 2px dashed #555;
-    background: repeating-linear-gradient( 45deg, #111, #111 10px, #222 10px, #222 20px );
-    animation: static-noise 0.1s infinite;
+    padding-top: 1em;
+    animation: pulse-red 3s infinite alternate;
 }
 
-@keyframes static-noise {
-    0%, 100% {
-        opacity: 1;
-        background-position: 0 0;
+    .final-transmission a {
+        color: #00ffff;
+        text-decoration: underline wavy red;
     }
 
-    50% {
-        opacity: 0.8;
-        background-position: 5px 5px;
-    }
+.final-entry .entry-title {
+    animation: horror-glitch 0.3s infinite alternate;
 }
 
+/* アニメーション定義 */
 
-.final-transmission .entry-image {
-    border: 5px solid #ffffff;
-    filter: grayscale(1) contrast(2) brightness(1.5); /* 白黒でハイコントラスト */
-    animation: image-flicker 0.2s infinite;
-    max-width: 250px; /* 少し小さくして不気味さを出す */
-}
-
-@keyframes image-flicker {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.4;
-        transform: scale(1.02);
-    }
-}
-
-.final-transmission a {
-    color: #00ff00; /* 緑色 */
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 1.2em;
-    display: inline-block; /* アニメーションのため */
-    animation: link-glow 1s infinite alternate;
-}
-
-    .final-transmission a:hover {
-        color: #ff0000; /* ホバーで赤 */
-        text-shadow: 0 0 10px #ff0000;
-    }
-
-@keyframes link-glow {
+@keyframes pulse-header {
     from {
-        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+        background: linear-gradient(45deg, #ff00cc, #3300ff);
     }
 
     to {
-        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 5px #fff;
+        background: linear-gradient(45deg, #3300ff, #ff00cc);
     }
 }
 
-/* 全体的なテキストフリッカーやグリッチ */
-@keyframes text-flicker {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
-}
-
-@keyframes glitch-body {
+@keyframes flicker {
     0% {
-        text-shadow: 0.5px 0.5px 1px #ff00ff, -0.5px -0.5px 1px #00ffff;
-    }
-
-    25% {
-        text-shadow: -0.5px 0.5px 1px #ff00ff, 0.5px -0.5px 1px #00ffff;
+        opacity: 0.95;
     }
 
     50% {
-        text-shadow: 0.5px -0.5px 1px #ff00ff, -0.5px 0.5px 1px #00ffff;
-        transform: translate(1px, -1px);
-    }
-
-    75% {
-        text-shadow: -0.5px -0.5px 1px #ff00ff, 0.5px 0.5px 1px #00ffff;
+        opacity: 0.6;
     }
 
     100% {
-        text-shadow: 0.5px 0.5px 1px #ff00ff, -0.5px -0.5px 1px #00ffff;
-        transform: translate(-1px, 1px);
+        opacity: 0.98;
     }
 }
 
-/* ページ下部の不気味なメッセージ */
-body::after {
-    content: "ヤツは…すぐそこに…";
-    position: fixed;
-    bottom: 5px;
-    right: 10px;
-    font-size: 0.8em;
-    color: rgba(255, 0, 0, 0.6);
-    font-family: 'Creepster', cursive;
-    letter-spacing: 1px;
-    z-index: 9999;
-    animation: whisper 10s infinite ease-in-out;
-    pointer-events: none; /* クリックを透過させる */
-}
-
-@keyframes whisper {
-    0%, 100% {
-        opacity: 0.6;
-        transform: translateX(0);
+@keyframes blood-blink {
+    0% {
+        color: #ff0033;
+        text-shadow: 0 0 10px #ff0033;
     }
 
     50% {
-        opacity: 0.2;
-        transform: translateX(-10px);
+        color: #880011;
+        text-shadow: 0 0 5px #440000;
+    }
+
+    100% {
+        color: #ff0033;
+        text-shadow: 0 0 10px #ff0033;
     }
 }
 
-/* スクロールバーも少し不気味に (ブラウザ依存) */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background: #110011;
-    box-shadow: inset 0 0 5px #ff00ff;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #ff00ff;
-    border-radius: 6px;
-    border: 1px solid #00ffff;
-}
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #00ffff;
-        border: 1px solid #ff00ff;
+@keyframes pulse-red {
+    0% {
+        text-shadow: 0 0 5px red;
     }
+
+    100% {
+        text-shadow: 0 0 20px red;
+    }
+}
+
+@keyframes horror-glitch {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2px, 1px);
+    }
+
+    40% {
+        transform: translate(2px, -1px);
+    }
+
+    60% {
+        transform: translate(-1px, 2px);
+    }
+
+    80% {
+        transform: translate(1px, -2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+.glitch-banner {
+    margin: 4em auto;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+    filter: drop-shadow(0 0 5px #ff00cc);
+}
+
+    .glitch-banner a {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+.glitch-image {
+    width: 300px;
+    max-width: 90%;
+    border: 3px solid #ff00cc;
+    box-shadow: 0 0 15px #ff00cc;
+    animation: glitchImg 0.8s infinite;
+}
+
+.glitch-text {
+    font-family: 'Creepster', cursive;
+    color: #ff00cc;
+    font-size: 2em;
+    margin-top: 0.5em;
+    text-shadow: 0 0 4px #ff00cc, 0 0 2px #000;
+    animation: glitchText 1s infinite;
+}
+
+/* グリッチエフェクト */
+@keyframes glitchImg {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, 1px);
+    }
+
+    80% {
+        transform: translate(2px, -1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitchText {
+    0% {
+        text-shadow: 2px 2px 0 #00ffff, -2px -2px 0 #ff00ff;
+    }
+
+    25% {
+        text-shadow: -2px 2px 0 #ffff00, 2px -2px 0 #ff00cc;
+    }
+
+    50% {
+        text-shadow: 2px -2px 0 #00ffcc, -2px 2px 0 #ff0066;
+    }
+
+    75% {
+        text-shadow: -2px -2px 0 #ffffff, 2px 2px 0 #000000;
+    }
+
+    100% {
+        text-shadow: 0 0 4px #ff00cc, 0 0 2px #000;
+    }
+}
