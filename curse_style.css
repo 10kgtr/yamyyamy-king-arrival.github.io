@@ -1,7 +1,8 @@
+/* curse_style.css */
 body {
     font-family: 'Courier New', Courier, monospace;
-    background-color: #1a1a1a;
-    color: #b0b0b0;
+    background-color: #000000;
+    color: #a9a9a9;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
@@ -10,36 +11,95 @@ body {
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box;
-    overflow: hidden; /* Prevent scrollbars from jumpscare elements */
+    overflow: hidden;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="0" y="15" font-family="monospace" font-size="10" fill="rgba(255,0,0,0.1)">éÙéÙéÙéÙéÙéÙéÙéÙéÙéÙ</text><text x="0" y="30" font-family="monospace" font-size="10" fill="rgba(255,0,0,0.08)">éÙéÙéÙéÙéÙéÙéÙéÙéÙéÙ</text><text x="0" y="45" font-family="monospace" font-size="10" fill="rgba(255,0,0,0.12)">éÙéÙéÙéÙéÙéÙéÙéÙéÙéÙ</text><text x="0" y="60" font-family="monospace" font-size="10" fill="rgba(255,0,0,0.09)">éÙéÙéÙéÙéÙéÙéÙéÙéÙéÙ</text><text x="0" y="75" font-family="monospace" font-size="10" fill="rgba(255,0,0,0.11)">éÙéÙéÙéÙéÙéÙéÙéÙéÙéÙ</text><text x="0" y="90" font-family="monospace" font-size="10" fill="rgba(255,0,0,0.07)">éÙéÙéÙéÙéÙéÙéÙéÙéÙéÙ</text></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><text x="5" y="15" font-family="monospace" font-size="8" fill="rgba(150,0,0,0.05)" transform="rotate(15)">éÙ</text><text x="30" y="35" font-family="monospace" font-size="12" fill="rgba(100,0,0,0.08)" transform="rotate(-10)">éÙ</text></svg>');
+    background-blend-mode: overlay;
+    animation: scrollBackground 20s linear infinite, glitchBackground 5s infinite steps(10);
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 500px 1000px, -500px -1000px;
+    }
+}
+
+@keyframes glitchBackground {
+    0%, 100% {
+        background-position: 0 0, 0 0;
+    }
+
+    10% {
+        background-position: 5px 2px, -3px 1px;
+    }
+
+    20% {
+        background-position: -5px -3px, 2px -2px;
+    }
+
+    30% {
+        background-position: 3px -1px, -4px 3px;
+    }
+
+    40% {
+        background-position: -2px 4px, 1px -3px;
+    }
+
+    50% {
+        background-position: 0 0, 0 0;
+    }
+
+    60% {
+        background-position: -4px 2px, 3px -1px;
+    }
+
+    70% {
+        background-position: 2px -2px, -5px 4px;
+    }
+
+    80% {
+        background-position: -1px 3px, 4px -2px;
+    }
+
+    90% {
+        background-position: 5px -3px, -2px 1px;
+    }
 }
 
 .container {
-    background-color: #2c2c2c;
-    padding: 20px 30px;
-    border: 1px solid #444;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    max-width: 800px;
-    width: 90%;
-    border-radius: 8px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    position: relative; /* For z-indexing if needed */
+    background-color: rgba(10, 0, 0, 0.85);
+    padding: 20px; /* Reduced padding to give more space for the image */
+    border: 1px solid #440000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6), inset 0 0 10px rgba(0,0,0,0.5);
+    max-width: 90%; /* Allow container to be wider */
+    width: auto; /* Let content define width up to max-width */
+    border-radius: 5px;
+    margin: 20px;
+    position: relative;
     z-index: 1;
+    text-align: center;
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
 }
 
 .page-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced margin */
     border-bottom: 2px dashed #cc0000;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+    width: 100%; /* Ensure header takes full width of container */
 }
 
     .page-header h1 {
         font-family: 'Creepster', cursive;
-        color: #ff6b6b;
-        font-size: 2.2em;
+        color: #ff3333;
+        font-size: 2.5em; /* Slightly reduced if space is an issue */
         margin-bottom: 5px;
-        text-shadow: 1px 1px 3px #000;
+        text-shadow: 0 0 10px #ff0000, 0 0 5px #ff0000, 0 0 15px #ff0000;
     }
 
 .researcher-name {
@@ -48,27 +108,33 @@ body {
     font-size: 0.9em;
 }
 
+#introduction, #research-log {
+    width: 100%; /* Ensure sections take full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
 #introduction {
-    margin-bottom: 30px;
-    padding: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
     background-color: #282828;
-    border-left: 3px solid #ff4d4d;
+    border-left: 4px solid #ff4d4d;
 }
 
     #introduction h2 {
-        font-size: 1.8em;
-        color: #ff8080;
+        font-size: 1.6em; /* Adjusted size */
+        color: #e0e0e0;
         border-bottom: none;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+        text-align: left;
     }
 
 .entry {
-    margin-bottom: 30px;
+    margin-bottom: 25px; /* Adjusted margin */
     padding: 15px;
-    border: 1px solid #555;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border: 1px solid #444;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .entry-header {
@@ -79,40 +145,68 @@ body {
 
 .entry-title {
     font-family: 'Noto Serif JP', serif;
-    font-size: 1.6em;
-    color: #ffd700;
+    font-size: 1.4em; /* Adjusted size */
+    color: #f1c40f;
     margin-bottom: 5px;
+    letter-spacing: 0.5px;
 }
 
 .entry-date {
-    font-size: 0.85em;
-    color: #888;
+    font-size: 0.8em;
+    color: #777;
     font-style: italic;
+    margin-bottom: 8px;
 }
 
 .entry-content p {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     text-align: justify;
     text-indent: 1.5em;
+    color: #ccc;
+    line-height: 1.6;
 }
 
-.entry-image {
-    max-width: 100%;
-    height: auto;
+/* --- MODIFIED IMAGE STYLE --- */
+#cursed-image { /* Assuming this is the ID for the image in curse.html */
     display: block;
-    margin: 15px auto;
-    border: 3px solid #555;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    filter: sepia(0.3) contrast(1.1) brightness(0.9);
+    width: 90%; /* Make image responsive, up to 90% of its container */
+    max-width: 600px; /* But not larger than 600px */
+    height: auto;
+    margin: 20px auto; /* Center it and add some vertical space */
+    border: 5px solid #8B0000; /* Dark red border */
+    box-shadow: 0 0 25px #FF0000, 0 0 40px #FF3333; /* More intense glow */
+    filter: grayscale(30%) sepia(40%) brightness(0.9); /* Adjusted filter */
+    animation: image-flicker-intense 0.3s infinite alternate; /* More intense flicker */
 }
+
+@keyframes image-flicker-intense {
+    0% {
+        opacity: 1;
+        filter: brightness(100%) sepia(40%);
+    }
+
+    50% {
+        opacity: 0.6;
+        filter: brightness(60%) sepia(70%) blur(1px);
+    }
+
+    100% {
+        opacity: 1;
+        filter: brightness(100%) sepia(40%);
+    }
+}
+/* --- END OF MODIFIED IMAGE STYLE --- */
 
 .small-image {
     max-width: 200px;
 }
 
 .highlight {
-    color: #ffeb3b;
+    background-color: #333;
+    color: #ffd700;
+    padding: 0 2px;
     font-weight: bold;
+    border-radius: 3px;
 }
 
 .warning-text {
@@ -125,47 +219,67 @@ body {
 }
 
 .yummy-takeover {
-    color: #ff6b6b;
+    color: #ff1111;
     font-weight: bold;
     text-align: center;
-    font-size: 1.2em;
-    letter-spacing: 2px;
+    font-size: 1.6em;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    animation: yummy-pulse 0.5s infinite alternate;
+    font-family: 'Creepster', cursive;
+    animation: yummy-pulse-strong 0.2s infinite alternate, text-flicker 0.08s infinite;
+    padding: 10px 0;
 }
 
-@keyframes yummy-pulse {
+@keyframes yummy-pulse-strong {
     from {
-        opacity: 0.7;
+        opacity: 0.5;
+        text-shadow: 0 0 8px #ff0000;
     }
 
     to {
+        opacity: 1;
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+    }
+}
+
+@keyframes text-flicker {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
         opacity: 1;
     }
 }
 
 .final-thoughts {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #111;
-    border: 1px solid #666;
-    color: #ff9999;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #101010;
+    border: 2px solid #770000;
+    color: #ff8080;
+    border-radius: 5px;
 }
 
     .final-thoughts strong {
-        color: #ff6b6b;
+        color: #ff4d4d;
     }
 
 .final-transmission {
     margin-top: 20px;
     padding: 15px;
-    border: 2px dashed #ff0000;
-    background-color: rgba(100, 0, 0, 0.2);
+    border: 2px dashed #c0392b;
+    background-color: rgba(44, 62, 80, 0.3);
     text-align: center;
+    color: #ecf0f1;
 }
 
     .final-transmission a {
-        color: #ffcc66;
+        color: #f1c40f;
         text-decoration: underline;
         font-weight: bold;
     }
@@ -174,24 +288,38 @@ body {
             color: #ffffff;
         }
 
+.final-countdown {
+    font-size: 1.8em;
+    color: #e74c3c;
+    margin-top: 15px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff0000;
+}
+
 .escape-link-container {
     text-align: center;
     margin-top: 30px;
+    position: relative;
+    height: 50px;
 }
 
 .escape-link {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #222;
+    color: #aaa;
     text-decoration: none;
+    border: 1px solid #444;
     border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.1s ease-out;
+    z-index: 1001;
+    position: absolute;
 }
 
     .escape-link:hover {
-        background-color: #45a049;
+        background-color: #555;
+        color: #fff;
     }
 
 .glitch-text {
@@ -277,104 +405,304 @@ body {
     }
 }
 
-/* Jumpscare specific styles for curse.html */
-#game-over-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95); /* Darker overlay for more impact */
-    z-index: 1000; /* Ensure it's on top */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #ff0000; /* Red text for a scary effect */
-    font-family: 'Creepster', cursive; /* Using the horror font */
+/* --- Styles for dr_himedime_notes.html --- */
+body.dr-himedime-body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0a0a0a; /* Dark, eerie background */
+    color: #b0b0b0; /* Dimmed text color */
+    line-height: 1.7;
+    margin: 0;
     padding: 20px;
-    box-sizing: border-box;
-    visibility: hidden; /* Initially hidden */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
 }
 
-    #game-over-screen.active {
-        visibility: visible;
-        opacity: 1;
+.dr-himedime-body .container {
+    background-color: #1e1e1e; /* Slightly lighter dark background */
+    padding: 25px 40px;
+    border: 1px solid #333;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.3), inset 0 0 10px rgba(0,0,0,0.5); /* Reddish glow */
+    max-width: 800px;
+    width: 90%;
+    border-radius: 3px; /* Sharper edges */
+    margin: 20px auto;
+    position: relative;
+    z-index: 1;
+}
+
+.dr-himedime-body .page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #770000; /* Darker red */
+    padding-bottom: 15px;
+}
+
+    .dr-himedime-body .page-header h1 {
+        font-family: 'Creepster', cursive;
+        color: #cc0000; /* Deep red */
+        font-size: 2.8em;
+        margin-bottom: 5px;
+        text-shadow: 1px 1px 2px #000, 0 0 8px #ff0000;
     }
 
-#yummy-face-curse { /* Unique ID for the curse page image */
-    width: 300px; /* Adjust size as needed */
-    height: 300px;
-    border-radius: 50%;
-    border: 5px solid red;
-    margin-bottom: 20px;
-    animation: pulse-intense 1s infinite alternate;
+.dr-himedime-body .researcher-name {
+    font-style: italic;
+    color: #aaa;
+    font-size: 0.9em;
 }
 
-#game-over-message-curse {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #ffcccc;
-    text-shadow: 1px 1px 3px #000;
+.dr-himedime-body #introduction {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #282828;
+    border-left: 4px solid #cc0000;
 }
 
-#reconcile-message-curse {
-    font-size: 2.5em;
+    .dr-himedime-body #introduction h2 {
+        font-size: 1.8em;
+        color: #e0e0e0;
+        border-bottom: none;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+.dr-himedime-body .entry {
+    margin-bottom: 35px;
+    padding: 20px;
+    border: 1px solid #444;
+    background-color: rgba(10, 10, 10, 0.7); /* More transparent */
+    border-radius: 0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.dr-himedime-body .entry-header {
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #555;
+    padding-bottom: 10px;
+}
+
+.dr-himedime-body .entry-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.6em;
+    color: #f1c40f; /* Gold */
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.dr-himedime-body .entry-date {
+    font-size: 0.85em;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.dr-himedime-body .entry-content p {
+    margin-bottom: 12px;
+    text-align: justify;
+    text-indent: 1.5em;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+.dr-himedime-body .entry-image {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #222;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    filter: sepia(0.6) contrast(1.1) brightness(0.85) blur(0.5px);
+}
+
+.dr-himedime-body .small-image {
+    max-width: 200px;
+}
+
+.dr-himedime-body .highlight {
+    background-color: #333;
+    color: #ffd700;
+    padding: 0 2px;
     font-weight: bold;
-    color: #ffcc00; /* Yellow for emphasis */
-    margin-top: 30px;
-    text-shadow: 2px 2px 4px #000;
-    animation: flicker 1s infinite alternate;
+    border-radius: 3px;
 }
 
-#cat-paws-container-curse {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
+.dr-himedime-body .warning-text {
+    color: #ff4d4d;
+    font-weight: bold;
+    border: 1px dashed #ff4d4d;
+    padding: 5px;
+    display: inline-block;
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
-.cat-paw-curse { /* Unique class for curse page paws */
-    position: absolute;
-    width: 80px; /* Adjust size as needed */
-    height: 80px;
-    background-image: url('https://www.transparentpng.com/thumb/cat-paw/black-cat-paw-print-clipart-png-image-X9Pz4A.png'); /* Replace with your cat paw image */
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: fallAndWiggle 2s ease-out forwards; /* Changed animation */
+.dr-himedime-body .yummy-takeover {
+    color: #ff1111;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.6em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Creepster', cursive;
+    animation: yummy-pulse-strong 0.2s infinite alternate, text-flicker 0.08s infinite;
+    padding: 10px 0;
 }
 
-@keyframes fallAndWiggle {
+@keyframes yummy-pulse-strong {
+    from {
+        opacity: 0.5;
+        text-shadow: 0 0 8px #ff0000;
+    }
+
+    to {
+        opacity: 1;
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+    }
+}
+
+@keyframes text-flicker {
     0% {
-        transform: translateY(-100px) rotate(0deg) scale(0.5);
         opacity: 1;
     }
 
     50% {
-        transform: translateY(50vh) rotate(360deg) scale(1); /* Wiggle mid-way */
+        opacity: 0.6;
     }
 
     100% {
-        transform: translateY(100vh) rotate(720deg) scale(1.5);
-        opacity: 0;
+        opacity: 1;
     }
 }
 
-#tweet-defeat-button-curse {
-    margin-top: 30px;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    background-color: #8B0000; /* Dark red */
-    color: white;
-    border: 2px solid #FF4500; /* Orange-red border */
+.dr-himedime-body .final-transmission {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed #c0392b;
+    background-color: rgba(44, 62, 80, 0.3);
+    text-align: center;
+    color: #ecf0f1;
 }
 
-    #tweet-defeat-button-curse:hover {
-        background-color: #A52A2A; /* Lighter red on hover */
+    .dr-himedime-body .final-transmission a {
+        color: #f1c40f;
+        text-decoration: underline;
+        font-weight: bold;
     }
+
+        .dr-himedime-body .final-transmission a:hover {
+            color: #ffffff;
+        }
+
+.dr-himedime-body .final-countdown {
+    font-size: 1.8em;
+    color: #e74c3c;
+    margin-top: 15px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.dr-himedime-body .escape-link-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.dr-himedime-body .escape-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #222;
+    color: #aaa;
+    text-decoration: none;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.1s ease-out;
+    z-index: 3;
+    position: relative;
+}
+
+    .dr-himedime-body .escape-link:hover {
+        background-color: #555;
+        color: #fff;
+    }
+
+/* Glitch effect (ã§í Ç»ÇÃÇ≈ÉÅÉCÉìCSSÇ…Ç†ÇÍÇŒïsóvÇ©Ç‡ÇµÇÍÇ»Ç¢) */
+.glitch-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff3333;
+    font-weight: bold;
+    position: relative;
+    animation: glitch 1.5s infinite;
+}
+
+    .glitch-text::before,
+    .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 red;
+        animation: glitch-anim1 2s infinite linear alternate-reverse;
+    }
+
+    .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 blue;
+        animation: glitch-anim2 2s infinite linear alternate-reverse;
+    }
+
+@keyframes glitch-anim1 {
+    0% {
+        clip-path: inset(79px 0 8px 0);
+    }
+
+    20% {
+        clip-path: inset(17px 0 55px 0);
+    }
+
+    40% {
+        clip-path: inset(33px 0 14px 0);
+    }
+
+    60% {
+        clip-path: inset(62px 0 72px 0);
+    }
+
+    80% {
+        clip-path: inset(39px 0 50px 0);
+    }
+
+    100% {
+        clip-path: inset(29px 0 81px 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip-path: inset(35px 0 26px 0);
+    }
+
+    20% {
+        clip-path: inset(72px 0 5px 0);
+    }
+
+    40% {
+        clip-path: inset(18px 0 82px 0);
+    }
+
+    60% {
+        clip-path: inset(50px 0 2px 0);
+    }
+
+    80% {
+        clip-path: inset(41px 0 60px 0);
+    }
+
+    100% {
+        clip-path: inset(88px 0 44px 0);
+    }
+}

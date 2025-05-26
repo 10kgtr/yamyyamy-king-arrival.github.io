@@ -9,7 +9,7 @@
 </head>
 <body>
     <audio id="bgm-curse" autoplay loop>
-        <source src="audio/creepy_music_box.mp3" type="audio/mpeg">
+        <source src="audio/creepy-music-box.mp3" type="audio/mpeg">
         お使いのブラウザはオーディオ要素をサポートしていません。
     </audio>
 
@@ -17,14 +17,16 @@
         <img src="images/kage1.png"
              alt="呪ワレシカゲキンノ肖像"
              id="cursed-image"
-             onerror="this.onerror=null;this.src='https://via.placeholder.com/300x300/000000/FF0000?text=画像読込エラー';"> <div class="curse-text" id="curse-text-area">
+             onerror="this.onerror=null;this.src='https://via.placeholder.com/300x300/000000/FF0000?text=画像読込エラー';">
+
+        <div class="curse-text" id="curse-text-area">
         </div>
 
         <div id="creeping-paws-container">
         </div>
 
         <p class="escape-link-container">
-            <a href="index.html" class="escape-link">……戻ル……</a>
+            <a href="index.html" class="escape-link" id="escape-button">……戻ル……</a>
         </p>
     </div>
 
@@ -34,11 +36,12 @@
             const curseTextArea = document.getElementById('curse-text-area');
             const curseWords = ["呪", "怨", "祟", "滅", "闇", "苦", "絶望", "逃レラレナイ", "常ニ見テイル", "ヤミーヤミーは来る"];
             const creepingPawsContainer = document.getElementById('creeping-paws-container');
+            const escapeButton = document.getElementById('escape-button'); // escape-buttonのIDを取得
 
             // 画像を揺らす
             if (cursedImage) {
                 setInterval(() => {
-                    const x = Math.random() * 6 - 3; // 少し控えめに
+                    const x = Math.random() * 6 - 3;
                     const y = Math.random() * 6 - 3;
                     cursedImage.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 1 - 0.5}deg)`;
                 }, 250);
@@ -65,42 +68,54 @@
                         curseTextArea.removeChild(curseTextArea.firstChild);
                     }
                 }, 700);
+            } else {
+                console.warn("Element with ID 'curse-text-area' not found. Curse words will not be displayed.");
             }
 
             // うごめく猫の手を追加
             if (creepingPawsContainer) {
-                const numberOfPaws = 10; // 表示する猫の手の数
+                const numberOfPaws = 4; // 左右に2つずつ
                 for (let i = 0; i < numberOfPaws; i++) {
                     const paw = document.createElement('div');
                     paw.classList.add('creeping-paw');
-                    // 初期位置を画面の端にランダムに設定
-                    const side = Math.floor(Math.random() * 4); // 0: top, 1: right, 2: bottom, 3: left
-                    switch (side) {
-                        case 0: // top
-                            paw.style.top = '-50px';
-                            paw.style.left = `${Math.random() * 100}vw`;
-                            break;
-                        case 1: // right
-                            paw.style.top = `${Math.random() * 100}vh`;
-                            paw.style.left = '100vw';
-                            break;
-                        case 2: // bottom
-                            paw.style.top = '100vh';
-                            paw.style.left = `${Math.random() * 100}vw`;
-                            break;
-                        case 3: // left
-                            paw.style.top = `${Math.random() * 100}vh`;
-                            paw.style.left = '-50px';
-                            break;
+                    paw.style.backgroundImage = 'url("images/yaminote.png")'; // 猫の手の画像パス
+                    paw.style.backgroundSize = 'contain';
+                    paw.style.backgroundRepeat = 'no-repeat';
+                    paw.style.width = '150px'; // サイズ調整
+                    paw.style.height = '200px'; // 縦長になるように調整 (300x400の比率を維持)
+
+                    paw.style.position = 'fixed'; // 画面に対して固定
+                    paw.style.opacity = '0.7'; // 少し透明度を上げる
+                    paw.style.zIndex = '2'; // 他の要素より手前に
+
+                    const verticalPos = `${Math.random() * 60 + 20}vh`; // 画面の20%から80%の高さにランダム配置
+
+                    if (i < numberOfPaws / 2) { // 左側の手
+                        paw.style.left = `${Math.random() * 10 - 5}%`; // 左端付近に配置
+                        paw.style.animation = `wiggleLeft 3s infinite ${Math.random() * 2}s alternate ease-in-out`;
+                    } else { // 右側の手
+                        paw.style.right = `${Math.random() * 10 - 5}%`; // 右端付近に配置
+                        paw.style.animation = `wiggleRight 3s infinite ${Math.random() * 2}s alternate ease-in-out`;
                     }
-                    paw.style.animationDelay = `${Math.random() * 5}s`; // 開始タイミングをずらす
-                    paw.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`); // カスタムプロパティでランダムな動き
-                    paw.style.setProperty('--random-y', `${Math.random() * 100 - 50}px`);
+                    paw.style.top = verticalPos;
                     creepingPawsContainer.appendChild(paw);
                 }
             }
 
-            // ページタイトルを点滅させる
+            // 「戻る」ボタンを逃げるように動かす
+            if (escapeButton) {
+                escapeButton.addEventListener('mouseover', () => {
+                    const maxX = window.innerWidth - escapeButton.offsetWidth;
+                    const maxY = window.innerHeight - escapeButton.offsetHeight;
+                    const newX = Math.random() * maxX;
+                    const newY = Math.random() * maxY;
+                    escapeButton.style.position = 'absolute'; // 絶対位置指定に変更
+                    escapeButton.style.left = `${newX}px`;
+                    escapeButton.style.top = `${newY}px`;
+                });
+            }
+
+            // ページタイトルを点滅させる (変更なし)
             let originalTitle = document.title;
             let isTitleCursed = false;
             setInterval(() => {
